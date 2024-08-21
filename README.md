@@ -14,4 +14,9 @@ An airline daily data ingestion project using S3, S3 Cloudtrail Notification, Ev
 ## Key Steps
 ### 1. Create a S3 bucket
 - we will create a S3 bucket "airflow-managed-yb" to store the airflow scripts under dags folder and requirement.txt.
-![S3](https://github.com/yash872/Airline-Data-Ingestion-Project/blob/main/Images/S3.JPG)
+![S3](https://github.com/yash872/Weather-Data-Analysis-Project/blob/main/Images/S3_before.JPG)
+
+
+### 2. Create a Codebuild Project
+- we will create a CodeBuild Project "weather-cicd" for the CICD setup which will copy the dags script and othe files to the S3 on the pull merge request.
+![S3](https://github.com/yash872/Weather-Data-Analysis-Project/blob/main/Images/CodeBuild.JPG)
