@@ -22,7 +22,7 @@ weather_dyf = glueContext.create_dynamic_frame.from_options(
     connection_type="s3",
     format="csv",
     connection_options={
-        "paths": [f"s3://weather-data-gds/date={current_date}/weather_api_data.csv"],
+        "paths": [f"s3://weather-data-yb/date={current_date}/weather_api_data.csv"],
         "recurse": True,
     },
     transformation_ctx="weather_dyf",
@@ -54,11 +54,11 @@ redshift_output = glueContext.write_dynamic_frame.from_options(
     frame=changeschema_weather_dyf,
     connection_type="redshift",
     connection_options={
-        "redshiftTmpDir": "s3://aws-glue-assets-851725469799-us-east-1/temporary/",
+        "redshiftTmpDir": "s3://aws-glue-assets-010526265053-us-east-1/temporary/",
         "useConnectionProperties": "true",
-        "aws_iam_role": "arn:aws:iam::851725469799:role/redshift_role",
+        "aws_iam_role": "arn:aws:iam::010526265053:role/service-role/AmazonRedshift-CommandsAccessRole-20240806T210859",
         "dbtable": "public.weather_data",
-        "connectionName": "Redshift-New-Connection",
+        "connectionName": "Redshift connection",
         "preactions": "DROP TABLE IF EXISTS public.weather_data; CREATE TABLE IF NOT EXISTS public.weather_data (dt VARCHAR, weather VARCHAR, visibility VARCHAR, temp VARCHAR, feels_like VARCHAR, min_temp VARCHAR, max_temp VARCHAR, pressure VARCHAR, sea_level VARCHAR, ground_level VARCHAR, humidity VARCHAR, wind VARCHAR);",
     },
     transformation_ctx="redshift_output",
