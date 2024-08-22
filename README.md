@@ -1,13 +1,13 @@
 # Weather-Data-Analysis-Project
 ***
 ## Project Overview
-This project is an overview of an Event Driven Sales Data Projection data pipeline that Process the Orders data based on their Status and route towards DynamoDB or SQS as per the Business requirement rules.
-An airline daily data ingestion project using S3, S3 Cloudtrail Notification, Event Bridge Pattern Rule, Glue Crawler, Glue Visual ETL, SNS, Redshift, and Step Function
+This project is an overview of an Weather Data Analysis Pipeline that extracts the weather data live from the weather APIs and load it into the Readshift after reuired transformation.
+This Project is using the the AWS Services like S3, CodeBuild, Airflow, Glue, Redshift etc. 
 
 ***
 
 ## Architectural Diagram
-![AirlineProject](https://github.com/yash872/Airline-Data-Ingestion-Project/blob/main/Images/AirlineProject.jpg)
+![Weather-Data-Analysis](https://github.com/yash872/Airline-Data-Ingestion-Project/blob/main/Images/Weather-Data-Analysis.jpg)
 
 ***
 
@@ -46,3 +46,23 @@ with the pull merge request, CodeBuild will be triggerd and perform the actions 
     - openweather_api_dag
     - transform_redshift_dag
 ![AirflowDags](https://github.com/yash872/Weather-Data-Analysis-Project/blob/main/Images/AirflowDags.JPG)
+
+### 6. Trigger the Dags
+- We will trigger the Dag "openweather_api_dag" and start the execution.
+![DagsTrigger](https://github.com/yash872/Weather-Data-Analysis-Project/blob/main/Images/DagsTrigger.JPG)
+
+this Dag will perform 3 Tasks
+![dag1](https://github.com/yash872/Weather-Data-Analysis-Project/blob/main/Images/dag1.JPG)
+
+    - Extract weather data from API and store in xcom
+    - ![xcom](https://github.com/yash872/Weather-Data-Analysis-Project/blob/main/Images/xcom.JPG)
+    
+    - Upload that data in S3 bucket "weather-data-yb" as weather_api_data.csv
+    - ![S3Data](https://github.com/yash872/Weather-Data-Analysis-Project/blob/main/Images/S3Data.JPG)
+
+    - Trigger the Transform Redshift Dag
+    - ![dag2](https://github.com/yash872/Weather-Data-Analysis-Project/blob/main/Images/dag2.JPG)
+        - Glue Job "glue_transform_task" will be created
+        - ![glueJob](https://github.com/yash872/Weather-Data-Analysis-Project/blob/main/Images/glueJob.JPG)
+        - Data will be transformed and load to Redshift table "public.weather_data"
+        - ![Redshift](https://github.com/yash872/Weather-Data-Analysis-Project/blob/main/Images/Redshift.JPG)
