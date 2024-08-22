@@ -7,7 +7,8 @@ This Project is using the the AWS Services like S3, CodeBuild, Airflow, Glue, Re
 ***
 
 ## Architectural Diagram
-![Weather-Data-Analysis](https://github.com/yash872/Airline-Data-Ingestion-Project/blob/main/Images/Weather-Data-Analysis.jpg)
+![Weather-Data-Analysis](https://github.com/yash872/Weather-Data-Analysis-Project/blob/main/Images/Weather-Data-Analysis.jpg)
+
 
 ***
 
