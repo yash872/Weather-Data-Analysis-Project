@@ -55,7 +55,7 @@ with the pull merge request, CodeBuild will be triggerd and perform the actions 
 this Dag will perform 3 Tasks
 ![dag1](https://github.com/yash872/Weather-Data-Analysis-Project/blob/main/Images/dag1.JPG)
 
-    - Extract weather data from API and store in xcom
+- Extract weather data from API and store in xcom
     - ![xcom](https://github.com/yash872/Weather-Data-Analysis-Project/blob/main/Images/xcom.JPG)
     
     - Upload that data in S3 bucket "weather-data-yb" as weather_api_data.csv
