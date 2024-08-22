@@ -11,7 +11,7 @@ from airflow.operators.dagrun_operator import TriggerDagRunOperator
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'start_date': datetime(2023, 8, 12),
+    'start_date': datetime(2024, 8, 21),
     'retries': 2,
     'retry_delay': timedelta(minutes=5),
 }
@@ -48,7 +48,7 @@ extract_api_data = PythonOperator(
 upload_to_s3 = S3CreateObjectOperator(
         task_id="upload_to_S3",
         aws_conn_id= 'aws_default',
-        s3_bucket='weather-data-gds',
+        s3_bucket='weather-data-yb',
         s3_key='date={{ ds }}/weather_api_data.csv',
         data="{{ ti.xcom_pull(key='final_data') }}",
         dag=dag,
